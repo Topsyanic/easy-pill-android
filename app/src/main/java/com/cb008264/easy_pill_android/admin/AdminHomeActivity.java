@@ -42,6 +42,7 @@ public class AdminHomeActivity extends AppCompatActivity implements NavigationVi
         ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.nav_drawer_open,R.string.nav_drawer_close);
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
+        getSupportActionBar().setElevation(0);
         getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,new AdminMenuFragment()).commit();
         if(savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new AdminMenuFragment());

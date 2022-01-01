@@ -29,7 +29,7 @@ import org.json.JSONObject;
 
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
-    private TextView textViewRegister;
+    private TextView textViewCustomer , textViewDoctor;
     private EditText mEmail;
     private EditText mPassword;
     private Button loginBtn;
@@ -38,8 +38,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        textViewRegister=findViewById(R.id.textViewRegister);
-        textViewRegister.setOnClickListener(this);
+        textViewCustomer=findViewById(R.id.textViewCustomer);
+        textViewCustomer.setOnClickListener(this);
+        textViewDoctor=findViewById(R.id.textViewDoctor);
+        textViewDoctor.setOnClickListener(this);
         mEmail=findViewById(R.id.loginEmailText);
         mPassword=findViewById(R.id.loginPasswordText);
         loginBtn=findViewById(R.id.loginBtn);
@@ -51,8 +53,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId())
         {
-            case R.id.textViewRegister:
-//                startActivity(new Intent(this,RegisterActivity.class));
+            case R.id.textViewCustomer:
+                startActivity(new Intent(this,RegisterCustomerActivity.class));
+                break;
+            case R.id.textViewDoctor:
+                startActivity(new Intent(this,RegisterDoctorActivity.class));
                 break;
             case R.id.loginBtn:
                 login();
@@ -92,7 +97,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
         progressBar.setVisibility(View.VISIBLE);
 
-        String  URL="http://192.168.8.100:43175/easy-pill-war/webresources/entities.user/user/"+mEmail.getText().toString();
+        String  URL="http://"+getApplicationContext().getResources().getString(R.string.ip_address)+":43175/easy-pill-war/webresources/entities.user/user/"+mEmail.getText().toString();
         RequestQueue requestQueue = Volley.newRequestQueue(this);
 
         JsonObjectRequest objectRequest = new JsonObjectRequest(Request.Method.GET, URL, null, new Response.Listener<JSONObject>() {
