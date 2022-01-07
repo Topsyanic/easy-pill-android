@@ -1,4 +1,4 @@
-package com.cb008264.easy_pill_android;
+package com.cb008264.easy_pill_android.utilities;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -11,8 +11,7 @@ public class MyHelper  extends SQLiteOpenHelper {
     }
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE NOTES (_id INTEGER PRIMARY KEY AUTOINCREMENT, TITLE TEXT, DESCRIPTION TEXT)");
-        db.execSQL("INSERT INTO NOTES (TITLE,DESCRIPTION) VALUES ('New Suppier Contact','+9478585622')");
+        db.execSQL("CREATE TABLE NOTES (_id TEXT PRIMARY KEY, TITLE TEXT, DESCRIPTION TEXT)");
 
     }
 

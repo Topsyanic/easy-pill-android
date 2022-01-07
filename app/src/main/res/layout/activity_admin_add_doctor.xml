@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegisterDoctorActivity">
+    tools:context=".admin.AdminAddDoctorActivity">
     <TextView
         android:id="@+id/registerLogo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Doctor Sign Up"
+        android:text="Add Doctor"
         android:textColor="#6D60D6"
         android:textSize="28dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -21,7 +21,7 @@
 
 
     <EditText
-        android:id="@+id/firstNameText"
+        android:id="@+id/addDoctor_firstNameText"
         android:layout_width="266dp"
         android:layout_height="47dp"
         android:backgroundTint="#6D60D6"
@@ -35,7 +35,7 @@
         app:layout_constraintVertical_bias="0.144" />
 
     <EditText
-        android:id="@+id/contactText"
+        android:id="@+id/addDoctor_contactText"
         android:layout_width="266dp"
         android:layout_height="47dp"
         android:backgroundTint="#6D60D6"
@@ -48,7 +48,7 @@
         app:layout_constraintVertical_bias="0.345" />
 
     <EditText
-        android:id="@+id/expertiseText"
+        android:id="@+id/addDoctor_expertiseText"
         android:layout_width="266dp"
         android:layout_height="47dp"
         android:backgroundTint="#6D60D6"
@@ -61,7 +61,7 @@
         app:layout_constraintVertical_bias="0.444" />
 
     <EditText
-        android:id="@+id/addressText"
+        android:id="@+id/addDoctor_addressText"
         android:layout_width="266dp"
         android:layout_height="47dp"
         android:backgroundTint="#6D60D6"
@@ -74,7 +74,7 @@
         app:layout_constraintVertical_bias="0.545" />
 
     <EditText
-        android:id="@+id/emailText"
+        android:id="@+id/addDoctor_emailText"
         android:layout_width="266dp"
         android:layout_height="47dp"
         android:backgroundTint="#6D60D6"
@@ -87,7 +87,7 @@
         app:layout_constraintVertical_bias="0.649" />
 
     <EditText
-        android:id="@+id/passwordText"
+        android:id="@+id/addDoctor_passwordText"
         android:layout_width="266dp"
         android:layout_height="47dp"
         android:backgroundTint="#6D60D6"
@@ -101,7 +101,7 @@
         app:layout_constraintVertical_bias="0.75" />
 
     <EditText
-        android:id="@+id/passwordText2"
+        android:id="@+id/addDoctor_passwordText2"
         android:layout_width="266dp"
         android:layout_height="47dp"
         android:backgroundTint="#6D60D6"
@@ -115,7 +115,7 @@
         app:layout_constraintVertical_bias="0.849" />
 
     <EditText
-        android:id="@+id/lastNameText"
+        android:id="@+id/addDoctor_lastNameText"
         android:layout_width="266dp"
         android:layout_height="47dp"
         android:backgroundTint="#6D60D6"
@@ -128,11 +128,11 @@
         app:layout_constraintVertical_bias="0.247" />
 
     <Button
-        android:id="@+id/registerBtn"
+        android:id="@+id/addDoctor_registerBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#6D60D6"
-        android:text="Register"
+        android:text="Add"
         app:backgroundTint="#6D60D6"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -141,7 +141,7 @@
         app:layout_constraintVertical_bias="0.957" />
 
     <ProgressBar
-        android:id="@+id/progressBar"
+        android:id="@+id/addDoctor_progressBar"
         style="?attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

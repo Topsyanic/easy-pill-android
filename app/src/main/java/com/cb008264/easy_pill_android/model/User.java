@@ -1,6 +1,10 @@
 package com.cb008264.easy_pill_android.model;
 
-public class User {
+import androidx.annotation.NonNull;
+
+import java.io.Serializable;
+
+public class User implements Serializable {
     private String userId;
     private String firstName;
     private String lastName;
@@ -89,6 +93,18 @@ public class User {
         this.userRole = userRole;
     }
 
-
-
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId='" + userId + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", contactNo='" + contactNo + '\'' +
+                ", address='" + address + '\'' +
+                ", expertise='" + expertise + '\'' +
+                ", userRole='" + userRole + '\'' +
+                '}';
+    }
 }

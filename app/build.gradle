@@ -42,4 +42,5 @@ dependencies {
     implementation 'javax.xml.bind:jaxb-api:2.3.1'
     implementation group: 'javax.xml.bind', name: 'jaxb-api', version: '2.2.12-b140109.1041'
     implementation group: 'xerces', name: 'xercesImpl', version: '2.12.0'
+    implementation 'com.airbnb.android:lottie:3.7.0'
 }

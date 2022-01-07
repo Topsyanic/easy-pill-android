@@ -1,6 +1,8 @@
 package com.cb008264.easy_pill_android.admin;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -43,9 +45,9 @@ public class AdminHomeActivity extends AppCompatActivity implements NavigationVi
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
         getSupportActionBar().setElevation(0);
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,new AdminMenuFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.adminFragmentContainer,new AdminMenuFragment()).commit();
         if(savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new AdminMenuFragment());
+            getSupportFragmentManager().beginTransaction().replace(R.id.adminFragmentContainer, new AdminMenuFragment());
             navigationView.setCheckedItem(R.id.nav_home);
 
         }
@@ -62,15 +64,24 @@ public class AdminHomeActivity extends AppCompatActivity implements NavigationVi
             super.onBackPressed();
         }
     }
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch(item.getItemId())
         {
-            case R.id.nav_home:getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,new AdminMenuFragment()).commit();
+            case R.id.nav_home:getSupportFragmentManager().beginTransaction().replace(R.id.adminFragmentContainer,new AdminMenuFragment()).commit();
                 break;
             case R.id.nav_logout:{
                 Intent intent = new Intent(this, LoginActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                SharedPreferences preferences = getSharedPreferences("checkbox", MODE_PRIVATE);
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putString("remember", "false");
+                editor.putString("username", "");
+                editor.putString("email", "");
+                editor.putString("userId", "");
+                editor.putString("role", "");
+                editor.apply();
                 startActivity(intent);
                 finish();
                 break;

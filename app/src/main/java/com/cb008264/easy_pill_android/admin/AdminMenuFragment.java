@@ -16,11 +16,43 @@ import com.cb008264.easy_pill_android.R;
 public class AdminMenuFragment extends Fragment {
     View v;
     TextView greetings;
-    ImageButton rideButton,bookingsButton;
+    ImageButton customerBtn,doctorBtn,pharmacistBtn,notesBtn,medicineBtn,ordersBtn;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         v =inflater.inflate(R.layout.fragment_admin_menu,container,false);
+        customerBtn =v.findViewById(R.id.btn_customers);
+        doctorBtn = v.findViewById(R.id.btn_doctors);
+        pharmacistBtn = v.findViewById(R.id.btn_pharmacists);
+        notesBtn = v.findViewById(R.id.btn_notes);
+        medicineBtn = v.findViewById(R.id.btn_medicines);
+        ordersBtn = v.findViewById(R.id.btn_orders);
+        notesBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.adminFragmentContainer, new AdminNotesFragment()).addToBackStack(null).commit();
+            }
+        });
+        customerBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.adminFragmentContainer, new AdminCustomersFragment()).addToBackStack(null).commit();
+            }
+        });
+
+        pharmacistBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.adminFragmentContainer, new AdminPharmacistsFragment()).addToBackStack(null).commit();
+            }
+        });
+
+        doctorBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.adminFragmentContainer, new AdminDoctorsFragment()).addToBackStack(null).commit();
+            }
+        });
 
         return v;
     }

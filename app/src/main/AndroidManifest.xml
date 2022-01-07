@@ -13,7 +13,27 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Easypillandroid"
         android:usesCleartextTraffic="true">
-        <activity android:name=".RegisterDoctorActivity"></activity>
+        <activity android:name=".admin.AdminAddDoctorActivity"
+            android:label=""></activity>
+        <activity
+            android:name=".admin.AdminViewDoctorActivity"
+            android:label="" />
+        <activity
+            android:name=".admin.AdminAddPharmacistActivity"
+            android:label="" />
+        <activity
+            android:name=".admin.AdminUpdateNoteActivity"
+            android:label="View Note" />
+        <activity
+            android:name=".admin.AdminAddNotesActivity"
+            android:label="Add Note" />
+        <activity
+            android:name=".admin.AdminAddCustomerActivity"
+            android:label="" />
+        <activity
+            android:name=".admin.AdminViewUserActivity"
+            android:label="" />
+        <activity android:name=".RegisterDoctorActivity" />
         <activity android:name=".RegisterCustomerActivity" />
         <activity
             android:name=".admin.AdminHomeActivity"
@@ -29,6 +49,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <provider
+            android:name=".utilities.NotesProvider"
+            android:authorities="com.cb008264.easy_pill_android.utilities"
+            android:exported="true"
+            android:grantUriPermissions="true" />
     </application>
 
 </manifest>
