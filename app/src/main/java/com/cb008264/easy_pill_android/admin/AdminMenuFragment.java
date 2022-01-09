@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.cb008264.easy_pill_android.R;
+import com.google.android.material.navigation.NavigationView;
 
 public class AdminMenuFragment extends Fragment {
     View v;
@@ -51,6 +52,20 @@ public class AdminMenuFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.adminFragmentContainer, new AdminDoctorsFragment()).addToBackStack(null).commit();
+            }
+        });
+
+        medicineBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.adminFragmentContainer, new AdminMedicineFragment()).addToBackStack(null).commit();
+            }
+        });
+
+        ordersBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.adminFragmentContainer, new AdminOrderFragment()).addToBackStack(null).commit();
             }
         });
 

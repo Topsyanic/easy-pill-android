@@ -13,8 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Easypillandroid"
         android:usesCleartextTraffic="true">
-        <activity android:name=".admin.AdminAddDoctorActivity"
-            android:label=""></activity>
+        <activity
+            android:name=".admin.AdminAddDoctorActivity"
+            android:label="" />
         <activity
             android:name=".admin.AdminViewDoctorActivity"
             android:label="" />

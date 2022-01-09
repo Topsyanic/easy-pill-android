@@ -48,7 +48,7 @@ public class AdminHomeActivity extends AppCompatActivity implements NavigationVi
         getSupportFragmentManager().beginTransaction().replace(R.id.adminFragmentContainer,new AdminMenuFragment()).commit();
         if(savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.adminFragmentContainer, new AdminMenuFragment());
-            navigationView.setCheckedItem(R.id.nav_home);
+//            navigationView.setCheckedItem(R.id.nav_home);
 
         }
 
@@ -70,6 +70,14 @@ public class AdminHomeActivity extends AppCompatActivity implements NavigationVi
         switch(item.getItemId())
         {
             case R.id.nav_home:getSupportFragmentManager().beginTransaction().replace(R.id.adminFragmentContainer,new AdminMenuFragment()).commit();
+                break;
+            case R.id.nav_customers:getSupportFragmentManager().beginTransaction().replace(R.id.adminFragmentContainer,new AdminCustomersFragment()).commit();
+                break;
+            case R.id.nav_doctors:getSupportFragmentManager().beginTransaction().replace(R.id.adminFragmentContainer,new AdminDoctorsFragment()).commit();
+                break;
+            case R.id.nav_pharmacists:getSupportFragmentManager().beginTransaction().replace(R.id.adminFragmentContainer,new AdminPharmacistsFragment()).commit();
+                break;
+            case R.id.nav_notes:getSupportFragmentManager().beginTransaction().replace(R.id.adminFragmentContainer,new AdminNotesFragment()).commit();
                 break;
             case R.id.nav_logout:{
                 Intent intent = new Intent(this, LoginActivity.class);

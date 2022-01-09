@@ -7,35 +7,42 @@
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_baseline_home_24"
             android:title="Home"
-            />
+            android:checkable="false"/>
 
         <item
             android:id="@+id/nav_customers"
             android:icon="@drawable/ic_baseline_groups_24"
+            android:checkable="false"
             android:title="Customers" />
         <item
             android:id="@+id/nav_doctors"
+            android:checkable="false"
             android:icon="@drawable/ic_baseline_people_24"
             android:title="Doctors" />
         <item
             android:id="@+id/nav_pharmacists"
+            android:checkable="false"
             android:icon="@drawable/ic_baseline_person_24"
             android:title="Pharmacists" />
 
         <item
             android:id="@+id/nav_medicine"
+            android:checkable="false"
             android:icon="@drawable/ic_baseline_local_hospital_24"
             android:title="Medicines" />
         <item
             android:id="@+id/nav_notes"
+            android:checkable="false"
             android:icon="@drawable/ic_baseline_format_list_bulleted_24"
             android:title="Notes" />
         <item
             android:id="@+id/nav_orders"
+            android:checkable="false"
             android:icon="@drawable/ic_baseline_directions_boat_24"
             android:title="Orders" />
         <item
             android:id="@+id/nav_logout"
+            android:checkable="false"
             android:icon="@drawable/ic_baseline_exit_to_app_24"
             android:title="Log out" />
 
