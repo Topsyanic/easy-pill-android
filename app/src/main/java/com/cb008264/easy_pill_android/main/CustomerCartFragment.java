@@ -3,6 +3,8 @@ package com.cb008264.easy_pill_android.main;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.media.Image;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -17,6 +19,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -39,15 +42,21 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.content.Context.MODE_PRIVATE;
+
 
 public class CustomerCartFragment extends Fragment {
+    SharedPreferences preferences;
     View v;
     RecyclerView recyclerView;
     EditText searchTxt;
     ImageButton addBtn, minusBtn, deleteBtn;
+    public static ImageButton finishBtn;
     List<Cart> items;
     AlertDialog.Builder builder;
+    public static TextView totalAmount;
     private String URL = "";
+    String userId;
     public static CartAdapter cartAdapter;
 
     @Override
@@ -59,12 +68,28 @@ public class CustomerCartFragment extends Fragment {
         addBtn = v.findViewById(R.id.btn_plus_cart);
         minusBtn = v.findViewById(R.id.btn_minus_cart);
         deleteBtn = v.findViewById(R.id.btn_delete_cart);
+        finishBtn = v.findViewById(R.id.finishButton);
+        totalAmount = v.findViewById(R.id.total_amount);
+        preferences = getActivity().getSharedPreferences("checkbox", MODE_PRIVATE);
+        userId = preferences.getString("userId", "");
         URL = "http://" + getActivity().getApplicationContext().getResources().getString(R.string.ip_address) + ":43175/easy-pill-war/webresources/entities.cart";
         items = new ArrayList<>();
         extractCart();
         cartAdapter = new CartAdapter(getActivity().getApplicationContext(), items, new CustomerCartFragment.CartClickListener());
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
         recyclerView.setAdapter(cartAdapter);
+
+        finishBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), CustomerCompleteActivity.class);
+                intent.putExtra("total", totalAmount.getText().toString());
+                intent.putExtra("details", cartAdapter.getOrderDetails());
+                intent.putExtra("userId", userId);
+                startActivity(intent);
+                totalAmount.setText(String.valueOf(cartAdapter.updateTotalInCart()));
+            }
+        });
 
         searchTxt.addTextChangedListener(new TextWatcher() {
             @Override
@@ -82,6 +107,7 @@ public class CustomerCartFragment extends Fragment {
                 filter(s.toString());
             }
         });
+
         return v;
     }
 
@@ -122,6 +148,13 @@ public class CustomerCartFragment extends Fragment {
                 cartAdapter = new CartAdapter(getActivity().getApplicationContext(), items, new CustomerCartFragment.CartClickListener());
                 recyclerView.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
                 recyclerView.setAdapter(cartAdapter);
+                if (cartAdapter.getItemCount() > 0 ){
+                    finishBtn.setVisibility(View.VISIBLE);
+                }
+                else {
+                    finishBtn.setVisibility(View.INVISIBLE);
+                }
+                totalAmount.setText(String.valueOf(cartAdapter.updateTotalInCart()));
             }
 
         }, new Response.ErrorListener() {
@@ -132,12 +165,14 @@ public class CustomerCartFragment extends Fragment {
         });
 
         queue.add(jsonArrayRequest);
+
     }
 
     public class CartClickListener implements CartAdapter.CartClickListener {
 
         @Override
         public void increaseQty(Cart cartItem, int position) {
+
             String URL = "http://" + getActivity().getApplicationContext().getResources().getString(R.string.ip_address) + ":43175/easy-pill-war/webresources/entities.cart/plus/" + cartItem.getCartId() + "/" + cartItem.getMedicineId();
             RequestQueue requestQueue = Volley.newRequestQueue(getActivity().getApplicationContext());
             JsonObjectRequest objectRequest = new JsonObjectRequest(Request.Method.POST, URL, null, new Response.Listener<JSONObject>() {
@@ -146,6 +181,7 @@ public class CustomerCartFragment extends Fragment {
                     Gson json = new Gson();
                     Cart cartItem = json.fromJson(String.valueOf(response), Cart.class);
                     cartAdapter.updateItemInCart(position, cartItem);
+                    totalAmount.setText(String.valueOf(cartAdapter.updateTotalInCart()));
                 }
             },
                     new Response.ErrorListener() {
@@ -161,25 +197,29 @@ public class CustomerCartFragment extends Fragment {
 
         @Override
         public void reduceQty(Cart cartItem, int position) {
-            String URL = "http://" + getActivity().getApplicationContext().getResources().getString(R.string.ip_address) + ":43175/easy-pill-war/webresources/entities.cart/minus/" + cartItem.getCartId() + "/" + cartItem.getMedicineId();
-            RequestQueue requestQueue = Volley.newRequestQueue(getActivity().getApplicationContext());
-            JsonObjectRequest objectRequest = new JsonObjectRequest(Request.Method.POST, URL, null, new Response.Listener<JSONObject>() {
-                @Override
-                public void onResponse(JSONObject response) {
-                    Gson json = new Gson();
-                    Cart cartItem = json.fromJson(String.valueOf(response), Cart.class);
-                    cartAdapter.updateItemInCart(position, cartItem);
-                }
-            },
-                    new Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-                            Toast.makeText(getActivity().getApplicationContext(), "Failed to reduce quantity", Toast.LENGTH_SHORT).show();
-                        }
+            if (cartItem.getQuantity() > 1) {
+                String URL = "http://" + getActivity().getApplicationContext().getResources().getString(R.string.ip_address) + ":43175/easy-pill-war/webresources/entities.cart/minus/" + cartItem.getCartId() + "/" + cartItem.getMedicineId();
+                RequestQueue requestQueue = Volley.newRequestQueue(getActivity().getApplicationContext());
+                JsonObjectRequest objectRequest = new JsonObjectRequest(Request.Method.POST, URL, null, new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Gson json = new Gson();
+                        Cart cartItem = json.fromJson(String.valueOf(response), Cart.class);
+                        cartAdapter.updateItemInCart(position, cartItem);
+                        totalAmount.setText(String.valueOf(cartAdapter.updateTotalInCart()));
                     }
-            );
-            requestQueue.add(objectRequest);
+                },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                Toast.makeText(getActivity().getApplicationContext(), "Failed to reduce quantity", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                );
+                requestQueue.add(objectRequest);
+            }
         }
+
 
         @Override
         public void removeItem(Cart cartItem, int position) {
@@ -200,6 +240,8 @@ public class CustomerCartFragment extends Fragment {
                                     RestMessage message = json.fromJson(String.valueOf(response), RestMessage.class);
                                     if (message.getMessage().equalsIgnoreCase("success")) {
                                         cartAdapter.removeItemFromCart(position);
+                                        totalAmount.setText(String.valueOf(cartAdapter.updateTotalInCart()));
+                                        updateUI();
                                         Toast.makeText(getActivity().getApplicationContext(), "Removed Successfully", Toast.LENGTH_SHORT).show();
                                     }
                                 }
@@ -220,6 +262,14 @@ public class CustomerCartFragment extends Fragment {
                 }
             }).show();
 
+        }
+        void updateUI(){
+            if (cartAdapter.getItemCount() > 0 ){
+                finishBtn.setVisibility(View.VISIBLE);
+            }
+            else {
+                finishBtn.setVisibility(View.INVISIBLE);
+            }
         }
     }
 }

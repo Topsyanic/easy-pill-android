@@ -19,17 +19,18 @@ import com.cb008264.easy_pill_android.LoginActivity;
 import com.cb008264.easy_pill_android.R;
 import com.google.android.material.navigation.NavigationView;
 
-public class DoctorHomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener  {
+public class CustomerHomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener  {
     DrawerLayout drawerLayout;
     String username;
     String userEmail;
     String userId;
     String userRole;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_doctor_home);
+        setContentView(R.layout.activity_customer_home);
         Toolbar toolbar = findViewById(R.id.nav_toolbar);
         setSupportActionBar(toolbar);
         username = getIntent().getExtras().getString("username");
@@ -47,9 +48,9 @@ public class DoctorHomeActivity extends AppCompatActivity implements NavigationV
         actionBarDrawerToggle.syncState();
         getSupportActionBar().setElevation(0);
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.doctorFragmentContainer, new DoctorMenuFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.customerFragmentContainer, new DoctorMenuFragment()).commit();
         if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.doctorFragmentContainer, new DoctorMenuFragment());
+            getSupportFragmentManager().beginTransaction().replace(R.id.customerFragmentContainer, new DoctorMenuFragment());
 
         }
     }
@@ -65,25 +66,22 @@ public class DoctorHomeActivity extends AppCompatActivity implements NavigationV
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.nav_home_doctor:
-                getSupportFragmentManager().beginTransaction().replace(R.id.doctorFragmentContainer, new DoctorMenuFragment()).commit();
+            case R.id.nav_home_customer:
+                getSupportFragmentManager().beginTransaction().replace(R.id.customerFragmentContainer, new DoctorMenuFragment()).commit();
                 break;
-            case R.id.nav_medicine_doctor:
-                getSupportFragmentManager().beginTransaction().replace(R.id.doctorFragmentContainer, new CustomerBrowseFragment()).commit();
+            case R.id.nav_medicine_customer:
+                getSupportFragmentManager().beginTransaction().replace(R.id.customerFragmentContainer, new CustomerBrowseFragment()).commit();
                 break;
-            case R.id.nav_cart_doctor:
-                getSupportFragmentManager().beginTransaction().replace(R.id.doctorFragmentContainer, new CustomerCartFragment()).commit();
+            case R.id.nav_cart_customer:
+                getSupportFragmentManager().beginTransaction().replace(R.id.customerFragmentContainer, new CustomerCartFragment()).commit();
                 break;
-            case R.id.nav_orders_doctor:
-                getSupportFragmentManager().beginTransaction().replace(R.id.doctorFragmentContainer, new CustomerOrderFragment()).commit();
+            case R.id.nav_orders_customer:
+                getSupportFragmentManager().beginTransaction().replace(R.id.customerFragmentContainer, new CustomerOrderFragment()).commit();
                 break;
-            case R.id.nav_history_doctor:
-                getSupportFragmentManager().beginTransaction().replace(R.id.doctorFragmentContainer, new CustomerHistoryFragment()).commit();
+            case R.id.nav_history_customer:
+                getSupportFragmentManager().beginTransaction().replace(R.id.customerFragmentContainer, new CustomerHistoryFragment()).commit();
                 break;
-            case R.id.nav_patients_doctor:
-                getSupportFragmentManager().beginTransaction().replace(R.id.doctorFragmentContainer, new AdminCustomersFragment()).commit();
-                break;
-            case R.id.nav_logout_doctor: {
+            case R.id.nav_logout_customer: {
                 Intent intent = new Intent(this, LoginActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 SharedPreferences preferences = getSharedPreferences("checkbox", MODE_PRIVATE);

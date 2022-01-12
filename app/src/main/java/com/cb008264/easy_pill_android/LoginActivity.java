@@ -21,6 +21,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.cb008264.easy_pill_android.main.AdminHomeActivity;
+import com.cb008264.easy_pill_android.main.CustomerHomeActivity;
 import com.cb008264.easy_pill_android.main.DoctorHomeActivity;
 import com.cb008264.easy_pill_android.main.PharmacistHomeActivity;
 import com.cb008264.easy_pill_android.model.User;
@@ -81,6 +82,16 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 }
                 case "doctor":{
                     Intent intent = new Intent(getApplicationContext(), DoctorHomeActivity.class);
+                    intent.putExtra("username", preferences.getString("username",""));
+                    intent.putExtra("email", preferences.getString("email",""));
+                    intent.putExtra("userId", preferences.getString("userId",""));
+                    intent.putExtra("role",role );
+                    startActivity(intent);
+                    finish();
+                    break;
+                }
+                case "customer":{
+                    Intent intent = new Intent(getApplicationContext(), CustomerHomeActivity.class);
                     intent.putExtra("username", preferences.getString("username",""));
                     intent.putExtra("email", preferences.getString("email",""));
                     intent.putExtra("userId", preferences.getString("userId",""));
@@ -180,6 +191,19 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             progressBar.setVisibility(View.GONE);
                             checkRememberMe(user);
                             Intent intent = new Intent(getApplicationContext(), DoctorHomeActivity.class);
+                            intent.putExtra("username", user.getFirstName() + " " + user.getLastName());
+                            intent.putExtra("email", user.getEmail());
+                            intent.putExtra("userId", user.getUserId());
+                            intent.putExtra("role", user.getUserRole());
+                            startActivity(intent);
+                            finish();
+                            break;
+                        }
+                        case "customer": {
+                            Toast.makeText(LoginActivity.this, "Logged in Successfully", Toast.LENGTH_LONG).show();
+                            progressBar.setVisibility(View.GONE);
+                            checkRememberMe(user);
+                            Intent intent = new Intent(getApplicationContext(), CustomerHomeActivity.class);
                             intent.putExtra("username", user.getFirstName() + " " + user.getLastName());
                             intent.putExtra("email", user.getEmail());
                             intent.putExtra("userId", user.getUserId());

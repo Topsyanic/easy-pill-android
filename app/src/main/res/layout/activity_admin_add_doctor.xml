@@ -40,6 +40,7 @@
         android:layout_height="47dp"
         android:backgroundTint="#6D60D6"
         android:hint="Contact Number"
+        android:inputType="number"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintLeft_toLeftOf="parent"

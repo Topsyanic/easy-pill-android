@@ -15,9 +15,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Easypillandroid"
         android:usesCleartextTraffic="true">
-        <activity android:name=".main.CustomerViewProductActivity"
-            android:label="View Product"
-            ></activity>
+        <activity android:name=".main.CustomerHomeActivity"></activity>
+        <activity android:name=".main.CustomerCompleteActivity" />
+        <activity
+            android:name=".main.CustomerViewProductActivity"
+            android:label="View Product" />
         <activity
             android:name=".main.DoctorHomeActivity"
             android:label=""

@@ -14,19 +14,19 @@ import com.cb008264.easy_pill_android.R;
 
 public class DoctorMenuFragment extends Fragment {
 View v;
-ImageButton browsebtn, cartBtn, patientsBtn,ordersBtn,historyBtn;
+ImageButton browseBtn, cartBtn, patientsBtn,ordersBtn,historyBtn;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.fragment_doctor_menu, container, false);
-        browsebtn = v.findViewById(R.id.btn_browse_doctor);
+        browseBtn = v.findViewById(R.id.btn_browse_doctor);
         cartBtn = v.findViewById(R.id.btn_cart_doctor);
         patientsBtn = v.findViewById(R.id.btn_patients_doctor);
         ordersBtn = v.findViewById(R.id.btn_orders_doctor);
         historyBtn = v.findViewById(R.id.btn_history_doctor);
 
-        browsebtn.setOnClickListener(new View.OnClickListener() {
+        browseBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.doctorFragmentContainer, new CustomerBrowseFragment()).addToBackStack(null).commit();
@@ -44,6 +44,20 @@ ImageButton browsebtn, cartBtn, patientsBtn,ordersBtn,historyBtn;
             @Override
             public void onClick(View v) {
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.doctorFragmentContainer, new CustomerCartFragment()).addToBackStack(null).commit();
+            }
+        });
+
+        ordersBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.doctorFragmentContainer, new CustomerOrderFragment()).addToBackStack(null).commit();
+            }
+        });
+
+        historyBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.doctorFragmentContainer, new CustomerHistoryFragment()).addToBackStack(null).commit();
             }
         });
 

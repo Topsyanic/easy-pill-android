@@ -17,29 +17,29 @@ import com.cb008264.easy_pill_android.model.CustomerOrder;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder>{
+public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
     LayoutInflater inflater;
     List<Cart> items;
     CartAdapter.CartClickListener cartClickListener;
 
-    public CartAdapter(Context context, List<Cart> items, CartAdapter.CartClickListener cartClickListener)
-    {
-        this.inflater =  LayoutInflater.from(context);
+    public CartAdapter(Context context, List<Cart> items, CartAdapter.CartClickListener cartClickListener) {
+        this.inflater = LayoutInflater.from(context);
         this.items = items;
         this.cartClickListener = cartClickListener;
     }
 
-    public interface CartClickListener
-    {
-        void increaseQty(Cart cartItem,int position);
-        void reduceQty(Cart cartItem,int position);
-        void removeItem(Cart cartItem,int position);
+    public interface CartClickListener {
+        void increaseQty(Cart cartItem, int position);
+
+        void reduceQty(Cart cartItem, int position);
+
+        void removeItem(Cart cartItem, int position);
     }
 
     @NonNull
     @Override
     public CartAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.cart_list_layout,parent,false);
+        View view = inflater.inflate(R.layout.cart_list_layout, parent, false);
         return new CartAdapter.ViewHolder(view);
     }
 
@@ -52,28 +52,29 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder>{
         holder.addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cartClickListener.increaseQty(cartItem,position);
+                cartClickListener.increaseQty(cartItem, position);
             }
         });
         holder.minusBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cartClickListener.reduceQty(cartItem,position);
+                cartClickListener.reduceQty(cartItem, position);
             }
         });
         holder.deleteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cartClickListener.removeItem(cartItem,position);
+                cartClickListener.removeItem(cartItem, position);
             }
         });
     }
 
     @Override
     public int getItemCount() {
-        return  items.size();
+        return items.size();
     }
-    public void filterList(ArrayList<Cart> filteredList){
+
+    public void filterList(ArrayList<Cart> filteredList) {
         items = filteredList;
         notifyDataSetChanged();
     }
@@ -83,15 +84,36 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder>{
         notifyDataSetChanged();
     }
 
-    public void updateItemInCart(int position,Cart cart) {
+    public void updateItemInCart(int position, Cart cart) {
         items.get(position).setSubTotal(cart.getSubTotal());
         items.get(position).setQuantity(cart.getQuantity());
         notifyDataSetChanged();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
-        TextView itemName,itemAmount,itemQty;
-        ImageButton addBtn,minusBtn,deleteBtn;
+    public double updateTotalInCart() {
+        double total = 0;
+        for (Cart cart : items) {
+            total = total + Double.valueOf(cart.getSubTotal());
+        }
+        return total;
+
+    }
+    public String getOrderDetails() {
+        String orderDetails = "";
+        for (Cart cart : items) {
+            orderDetails = orderDetails + " " + cart.getProductName() + "(" + cart.getQuantity()+ ") ";
+        }
+        return orderDetails;
+
+    }
+    public void emptyCart(){
+        items.clear();
+        notifyDataSetChanged();
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder {
+        TextView itemName, itemAmount, itemQty;
+        ImageButton addBtn, minusBtn, deleteBtn;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
