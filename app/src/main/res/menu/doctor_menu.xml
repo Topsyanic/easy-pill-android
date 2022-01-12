@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home_doctor"
+            android:icon="@drawable/ic_baseline_home_24"
+            android:title="Home"
+            android:checkable="false"/>
+        <item
+            android:id="@+id/nav_medicine_doctor"
+            android:checkable="false"
+            android:icon="@drawable/ic_baseline_local_hospital_24"
+            android:title="Browse" />
+        <item
+            android:id="@+id/nav_cart_doctor"
+            android:icon="@drawable/ic_baseline_shopping_cart_24"
+            android:title="Cart"
+            android:checkable="false"/>
+
+        <item
+            android:id="@+id/nav_orders_doctor"
+            android:checkable="false"
+            android:icon="@drawable/ic_baseline_directions_boat_24"
+            android:title=" Pending Orders" />
+        <item
+            android:id="@+id/nav_history_doctor"
+            android:checkable="false"
+            android:icon="@drawable/ic_baseline_history_24"
+            android:title="Order History" />
+
+        <item
+            android:id="@+id/nav_patients_doctor"
+            android:icon="@drawable/ic_baseline_groups_24"
+            android:checkable="false"
+            android:title="Patients" />
+        <item
+            android:id="@+id/nav_logout_doctor"
+            android:checkable="false"
+            android:icon="@drawable/ic_baseline_exit_to_app_24"
+            android:title="Log out" />
+
+    </group>
+
+</menu>

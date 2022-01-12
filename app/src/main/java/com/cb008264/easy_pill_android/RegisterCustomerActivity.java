@@ -1,11 +1,9 @@
 package com.cb008264.easy_pill_android;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.telephony.PhoneNumberUtils;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
@@ -25,8 +23,6 @@ import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.cb008264.easy_pill_android.admin.AdminHomeActivity;
-import com.cb008264.easy_pill_android.model.User;
 import com.cb008264.easy_pill_android.utilities.PasswordHasher;
 import com.cb008264.easy_pill_android.utilities.RestMessage;
 import com.cb008264.easy_pill_android.utilities.UserIdGenerator;
@@ -36,8 +32,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
-import java.util.HashMap;
-import java.util.Map;
 
 public class RegisterCustomerActivity extends AppCompatActivity implements View.OnClickListener {
     private TextView firstNameText, lastNameText, emailText, passwordText, confirmPasswordText, contactText, addressText;

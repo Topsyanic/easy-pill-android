@@ -74,20 +74,34 @@
         app:layout_constraintHorizontal_bias="0.804"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.531"
+        app:layout_constraintVertical_bias="0.802"
         app:srcCompat="@drawable/notes" />
 
+    <ImageButton
+        android:id="@+id/btn_orders"
+        android:layout_width="115dp"
+        android:layout_height="112dp"
+        android:background="@color/white"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.804"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.531"
+        app:srcCompat="@drawable/cart" />
+
     <TextView
-        android:id="@+id/textView8"
-        android:layout_width="107dp"
-        android:layout_height="19dp"
-        android:text="Orders"
+        android:id="@+id/textView6"
+        android:layout_width="102dp"
+        android:layout_height="23dp"
+        android:text="Notes"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.809"
+        app:layout_constraintHorizontal_bias="0.812"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.877" />
@@ -105,21 +119,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.802"
         app:srcCompat="@drawable/drugs" />
-
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="102dp"
-        android:layout_height="23dp"
-        android:text="Notes"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="18dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.796"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.629" />
 
     <TextView
         android:id="@+id/textView2"
@@ -209,19 +208,20 @@
         app:layout_constraintVertical_bias="0.263"
         app:srcCompat="@drawable/doctor" />
 
-    <ImageButton
-        android:id="@+id/btn_orders"
-        android:layout_width="115dp"
-        android:layout_height="112dp"
-        android:background="@color/white"
-        android:scaleType="fitCenter"
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="107dp"
+        android:layout_height="19dp"
+        android:text="Orders"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.804"
+        app:layout_constraintHorizontal_bias="0.832"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.802"
-        app:srcCompat="@drawable/cart" />
+        app:layout_constraintVertical_bias="0.632" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

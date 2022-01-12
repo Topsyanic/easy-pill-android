@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     app:layout_behavior="@string/fab_transformation_scrim_behavior"
     android:layout_height="match_parent"
-    tools:context=".admin.AdminNotesFragment">
+    tools:context=".main.AdminNotesFragment">
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

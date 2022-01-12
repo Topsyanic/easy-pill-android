@@ -1,15 +1,12 @@
 package com.cb008264.easy_pill_android;
 
-import android.app.VoiceInteractor;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -23,7 +20,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.cb008264.easy_pill_android.admin.AdminHomeActivity;
+import com.cb008264.easy_pill_android.main.AdminHomeActivity;
+import com.cb008264.easy_pill_android.main.DoctorHomeActivity;
+import com.cb008264.easy_pill_android.main.PharmacistHomeActivity;
 import com.cb008264.easy_pill_android.model.User;
 import com.cb008264.easy_pill_android.utilities.PasswordHasher;
 import com.google.gson.Gson;
@@ -36,9 +35,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private CheckBox rememberMe;
     private EditText mEmail;
     private EditText mPassword;
-    private Button loginBtn;
     ProgressBar progressBar;
     private String checkBox;
+    String role;
     SharedPreferences preferences;
 
     @Override
@@ -52,17 +51,36 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         rememberMe = findViewById(R.id.rememberMe);
         mEmail = findViewById(R.id.loginEmailText);
         mPassword = findViewById(R.id.loginPasswordText);
-        loginBtn = findViewById(R.id.loginBtn);
         progressBar = findViewById(R.id.progressBar);
         getSupportActionBar().hide();
         preferences = getSharedPreferences("checkbox", MODE_PRIVATE);
         checkBox = preferences.getString("remember", "");
         if (checkBox.equalsIgnoreCase("true")) {
-            String role = preferences.getString("role","");
+         role = preferences.getString("role","");
             switch (role)
             {
                 case "admin":{
                     Intent intent = new Intent(getApplicationContext(), AdminHomeActivity.class);
+                    intent.putExtra("username", preferences.getString("username",""));
+                    intent.putExtra("email", preferences.getString("email",""));
+                    intent.putExtra("userId", preferences.getString("userId",""));
+                    intent.putExtra("role",role );
+                    startActivity(intent);
+                    finish();
+                    break;
+                }
+                case "pharmacist":{
+                    Intent intent = new Intent(getApplicationContext(), PharmacistHomeActivity.class);
+                    intent.putExtra("username", preferences.getString("username",""));
+                    intent.putExtra("email", preferences.getString("email",""));
+                    intent.putExtra("userId", preferences.getString("userId",""));
+                    intent.putExtra("role",role );
+                    startActivity(intent);
+                    finish();
+                    break;
+                }
+                case "doctor":{
+                    Intent intent = new Intent(getApplicationContext(), DoctorHomeActivity.class);
                     intent.putExtra("username", preferences.getString("username",""));
                     intent.putExtra("email", preferences.getString("email",""));
                     intent.putExtra("userId", preferences.getString("userId",""));
@@ -134,29 +152,34 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         case "admin": {
                             Toast.makeText(LoginActivity.this, "Logged in Successfully", Toast.LENGTH_LONG).show();
                             progressBar.setVisibility(View.GONE);
-                            if(rememberMe.isChecked())
-                            {
-                                SharedPreferences preferences = getSharedPreferences("checkbox", MODE_PRIVATE);
-                                SharedPreferences.Editor editor = preferences.edit();
-                                editor.putString("remember", "true");
-                                editor.putString("username", ""+user.getFirstName() + " " + user.getLastName());
-                                editor.putString("email", ""+user.getEmail());
-                                editor.putString("userId", ""+ user.getUserId());
-                                editor.putString("role", ""+ user.getUserRole());
-                                editor.apply();
-                            }
-                            else if (!rememberMe.isChecked())
-                            {
-                                SharedPreferences preferences = getSharedPreferences("checkbox", MODE_PRIVATE);
-                                SharedPreferences.Editor editor = preferences.edit();
-                                editor.putString("remember", "false");
-                                editor.putString("username", "");
-                                editor.putString("email", "");
-                                editor.putString("userId", "");
-                                editor.putString("role", "");
-                                editor.apply();
-                            }
+                            checkRememberMe(user);
                             Intent intent = new Intent(getApplicationContext(), AdminHomeActivity.class);
+                            intent.putExtra("username", user.getFirstName() + " " + user.getLastName());
+                            intent.putExtra("email", user.getEmail());
+                            intent.putExtra("userId", user.getUserId());
+                            intent.putExtra("role", user.getUserRole());
+                            startActivity(intent);
+                            finish();
+                            break;
+                        }
+                        case "pharmacist": {
+                            Toast.makeText(LoginActivity.this, "Logged in Successfully", Toast.LENGTH_LONG).show();
+                            progressBar.setVisibility(View.GONE);
+                            checkRememberMe(user);
+                            Intent intent = new Intent(getApplicationContext(), PharmacistHomeActivity.class);
+                            intent.putExtra("username", user.getFirstName() + " " + user.getLastName());
+                            intent.putExtra("email", user.getEmail());
+                            intent.putExtra("userId", user.getUserId());
+                            intent.putExtra("role", user.getUserRole());
+                            startActivity(intent);
+                            finish();
+                            break;
+                        }
+                        case "doctor": {
+                            Toast.makeText(LoginActivity.this, "Logged in Successfully", Toast.LENGTH_LONG).show();
+                            progressBar.setVisibility(View.GONE);
+                            checkRememberMe(user);
+                            Intent intent = new Intent(getApplicationContext(), DoctorHomeActivity.class);
                             intent.putExtra("username", user.getFirstName() + " " + user.getLastName());
                             intent.putExtra("email", user.getEmail());
                             intent.putExtra("userId", user.getUserId());
@@ -192,4 +215,29 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     }
 
+    void checkRememberMe(User user)
+    {
+        if(rememberMe.isChecked())
+        {
+            SharedPreferences preferences = getSharedPreferences("checkbox", MODE_PRIVATE);
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putString("remember", "true");
+            editor.putString("username", ""+user.getFirstName() + " " + user.getLastName());
+            editor.putString("email", ""+user.getEmail());
+            editor.putString("userId", ""+ user.getUserId());
+            editor.putString("role", ""+ user.getUserRole());
+            editor.apply();
+        }
+        else if (!rememberMe.isChecked())
+        {
+            SharedPreferences preferences = getSharedPreferences("checkbox", MODE_PRIVATE);
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putString("remember", "false");
+            editor.putString("username", "");
+            editor.putString("email", "");
+            editor.putString("userId", "");
+            editor.putString("role", "");
+            editor.apply();
+        }
+    }
 }

@@ -3,6 +3,8 @@
     package="com.cb008264.easy_pill_android">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
@@ -13,31 +15,48 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Easypillandroid"
         android:usesCleartextTraffic="true">
+        <activity android:name=".main.CustomerViewProductActivity"
+            android:label="View Product"
+            ></activity>
         <activity
-            android:name=".admin.AdminAddDoctorActivity"
+            android:name=".main.DoctorHomeActivity"
+            android:label=""
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".main.PharmacistHomeActivity"
+            android:label=""
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".main.AdminViewOrderActivity"
             android:label="" />
         <activity
-            android:name=".admin.AdminViewDoctorActivity"
+            android:name=".main.AdminViewMedicineActivity"
             android:label="" />
         <activity
-            android:name=".admin.AdminAddPharmacistActivity"
+            android:name=".main.AdminAddDoctorActivity"
             android:label="" />
         <activity
-            android:name=".admin.AdminUpdateNoteActivity"
+            android:name=".main.AdminViewDoctorActivity"
+            android:label="" />
+        <activity
+            android:name=".main.AdminAddPharmacistActivity"
+            android:label="" />
+        <activity
+            android:name=".main.AdminUpdateNoteActivity"
             android:label="View Note" />
         <activity
-            android:name=".admin.AdminAddNotesActivity"
+            android:name=".main.AdminAddNotesActivity"
             android:label="Add Note" />
         <activity
-            android:name=".admin.AdminAddCustomerActivity"
+            android:name=".main.AdminAddCustomerActivity"
             android:label="" />
         <activity
-            android:name=".admin.AdminViewUserActivity"
+            android:name=".main.AdminViewUserActivity"
             android:label="" />
         <activity android:name=".RegisterDoctorActivity" />
         <activity android:name=".RegisterCustomerActivity" />
         <activity
-            android:name=".admin.AdminHomeActivity"
+            android:name=".main.AdminHomeActivity"
             android:label=""
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity

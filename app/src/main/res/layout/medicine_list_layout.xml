@@ -38,97 +38,159 @@
 
             <TextView
                 android:id="@+id/medicineName"
-                android:layout_width="222dp"
-                android:layout_height="36dp"
+                android:layout_width="263dp"
+                android:layout_height="35dp"
                 android:paddingLeft="5dp"
                 android:text="Example Medicine"
                 android:textColor="@color/white"
-                android:textSize="24dp"
+                android:textSize="20dp"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.571"
+                app:layout_constraintHorizontal_bias="0.225"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.147" />
+                app:layout_constraintVertical_bias="0.053" />
 
             <TextView
                 android:id="@+id/medicinePrice"
-                android:layout_width="220dp"
-                android:layout_height="28dp"
+                android:layout_width="80dp"
+                android:layout_height="25dp"
                 android:paddingLeft="5dp"
-                android:text="Rs.200"
+                android:text="200"
                 android:textColor="@color/white"
-                android:textSize="18dp"
+                android:textSize="20dp"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.561"
+                app:layout_constraintHorizontal_bias="0.767"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.496" />
+                app:layout_constraintVertical_bias="0.378" />
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="33dp"
+                android:layout_height="26dp"
+                android:gravity="center"
+                android:paddingLeft="5dp"
+                android:text="Rs."
+                android:textColor="@color/white"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.514"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.381" />
+
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:src="@drawable/price_icon"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.392"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.366" />
+
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="26dp"
+                android:layout_height="28dp"
+                android:src="@drawable/quantity_icon"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.389"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.598" />
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/weight_icon"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.388"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.842" />
 
             <TextView
                 android:id="@+id/medicineQuantity"
-                android:layout_width="223dp"
-                android:layout_height="32dp"
+                android:layout_width="26dp"
+                android:layout_height="22dp"
                 android:paddingLeft="5dp"
                 android:text="0"
                 android:textColor="@color/white"
                 android:textSize="18dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.576"
+                app:layout_constraintHorizontal_bias="0.503"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.842" />
+                app:layout_constraintVertical_bias="0.615" />
 
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="36dp"
-                android:layout_height="39dp"
-                android:src="@drawable/user_icon"
+            <TextView
+                android:id="@+id/medicineWeight"
+                android:layout_width="125dp"
+                android:layout_height="24dp"
+                android:paddingLeft="5dp"
+                android:text="10 Kilograms"
+                android:textColor="@color/white"
+                android:textSize="18dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.05"
+                app:layout_constraintHorizontal_bias="0.736"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.123" />
+                app:layout_constraintVertical_bias="0.843" />
 
-            <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="36dp"
-                android:layout_height="39dp"
-                android:src="@drawable/mail_icon"
+
+            <TextView
+                android:id="@+id/textView17"
+                android:layout_width="82dp"
+                android:layout_height="24dp"
+                android:paddingLeft="5dp"
+                android:text="Available"
+                android:textColor="@color/white"
+                android:textSize="18dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.053"
+                app:layout_constraintHorizontal_bias="0.718"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.446" />
+                app:layout_constraintVertical_bias="0.624" />
 
             <ImageView
-                android:id="@+id/imageView1"
-                android:layout_width="36dp"
-                android:layout_height="39dp"
-                android:src="@drawable/contact_icon"
+                android:id="@+id/medicineImage"
+                android:layout_width="108dp"
+                android:layout_height="92dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.053"
+                app:layout_constraintHorizontal_bias="0.026"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.83" />
+                app:layout_constraintVertical_bias="0.698" />
 
             <ImageButton
                 android:id="@+id/medicine_btn_arrow"
-                android:layout_width="42dp"
-                android:layout_height="157dp"
+                android:layout_width="52dp"
+                android:layout_height="163dp"
                 android:background="#7896EE"
                 android:scaleType="fitCenter"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.979"
+                app:layout_constraintHorizontal_bias="0.989"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.476" />
+                app:layout_constraintVertical_bias="0.0" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

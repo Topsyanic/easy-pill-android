@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home_pharmacist"
+            android:icon="@drawable/ic_baseline_home_24"
+            android:title="Home"
+            android:checkable="false"/>
+        <item
+            android:id="@+id/nav_customers_pharmacist"
+            android:icon="@drawable/ic_baseline_groups_24"
+            android:checkable="false"
+            android:title="Customers" />
+        <item
+            android:id="@+id/nav_doctors_pharmacist"
+            android:checkable="false"
+            android:icon="@drawable/ic_baseline_people_24"
+            android:title="Doctors" />
+        <item
+            android:id="@+id/nav_pharmacists_pharmacist"
+            android:checkable="false"
+            android:icon="@drawable/ic_baseline_person_24"
+            android:title="Pharmacists" />
+
+        <item
+            android:id="@+id/nav_medicine_pharmacist"
+            android:checkable="false"
+            android:icon="@drawable/ic_baseline_local_hospital_24"
+            android:title="Medicines" />
+        <item
+            android:id="@+id/nav_orders_pharmacist"
+            android:checkable="false"
+            android:icon="@drawable/ic_baseline_directions_boat_24"
+            android:title="Orders" />
+        <item
+            android:id="@+id/nav_logout_pharmacist"
+            android:checkable="false"
+            android:icon="@drawable/ic_baseline_exit_to_app_24"
+            android:title="Log out" />
+
+    </group>
+
+</menu>
