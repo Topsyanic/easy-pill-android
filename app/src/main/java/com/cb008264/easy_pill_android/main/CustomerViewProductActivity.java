@@ -62,7 +62,7 @@ public class CustomerViewProductActivity extends AppCompatActivity {
             descriptionTxt.setText(medicine.getDescription());
             maxQty = Integer.parseInt(medicine.getQuantity());
             String medicineImageName = medicine.getImagePath().substring(medicine.getImagePath().lastIndexOf("\\")+1);
-            Glide.with(imageView).load("http://192.168.8.100:43175/easy-pill-war/ProductImages/"+medicineImageName).into(imageView);
+            Glide.with(imageView).load("http://192.168.8.101:43175/easy-pill-war/ProductImages/"+medicineImageName).into(imageView);
         }
         counter = Integer.parseInt(qtyText.getText().toString());
 

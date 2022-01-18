@@ -18,7 +18,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.cb008264.easy_pill_android.NotesAdapter;
 import com.cb008264.easy_pill_android.R;
 import com.cb008264.easy_pill_android.model.Note;
 import com.cb008264.easy_pill_android.utilities.NotesProvider;

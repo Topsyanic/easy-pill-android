@@ -48,9 +48,9 @@ public class CustomerHomeActivity extends AppCompatActivity implements Navigatio
         actionBarDrawerToggle.syncState();
         getSupportActionBar().setElevation(0);
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.customerFragmentContainer, new DoctorMenuFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.customerFragmentContainer, new CustomerMenuFragment()).commit();
         if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.customerFragmentContainer, new DoctorMenuFragment());
+            getSupportFragmentManager().beginTransaction().replace(R.id.customerFragmentContainer, new CustomerMenuFragment());
 
         }
     }
@@ -67,7 +67,7 @@ public class CustomerHomeActivity extends AppCompatActivity implements Navigatio
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.nav_home_customer:
-                getSupportFragmentManager().beginTransaction().replace(R.id.customerFragmentContainer, new DoctorMenuFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.customerFragmentContainer, new CustomerMenuFragment()).commit();
                 break;
             case R.id.nav_medicine_customer:
                 getSupportFragmentManager().beginTransaction().replace(R.id.customerFragmentContainer, new CustomerBrowseFragment()).commit();

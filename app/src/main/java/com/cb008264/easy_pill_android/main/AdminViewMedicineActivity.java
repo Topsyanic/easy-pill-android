@@ -41,7 +41,7 @@ public class AdminViewMedicineActivity extends AppCompatActivity {
             prescriptionTxt.setText(medicine.getRequirePres());
             descriptionTxt.setText(medicine.getDescription());
             String medicineImageName = medicine.getImagePath().substring(medicine.getImagePath().lastIndexOf("\\")+1);
-            Glide.with(imageView).load("http://192.168.8.100:43175/easy-pill-war/ProductImages/"+medicineImageName).into(imageView);
+            Glide.with(imageView).load("http://192.168.8.101:43175/easy-pill-war/ProductImages/"+medicineImageName).into(imageView);
         }
     }
 }

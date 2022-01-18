@@ -38,7 +38,7 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.ViewHo
     {
         void selectedCustomer(User user);
         void deleteCustomer(User user,int position);
-    }
+}
 
 
 

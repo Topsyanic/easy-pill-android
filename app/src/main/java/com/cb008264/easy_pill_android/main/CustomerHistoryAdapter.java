@@ -65,7 +65,7 @@ public class CustomerHistoryAdapter extends RecyclerView.Adapter<CustomerHistory
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         TextView orderId,orderDate,orderStatus;
-        ImageButton arrowBtn,cancelBtn;
+        ImageButton arrowBtn;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

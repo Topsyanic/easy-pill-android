@@ -52,7 +52,7 @@ public interface MedicineClickListener
         holder.medicineQuantity.setText(medicines.get(position).getQuantity());
         holder.medicineWeight.setText(medicines.get(position).getWeight());
         String medicineImageName = medicines.get(position).getImagePath().substring(medicines.get(position).getImagePath().lastIndexOf("\\")+1);
-        Glide.with(holder.medicineImg).load("http://192.168.8.100:43175/easy-pill-war/ProductImages/"+medicineImageName).into(holder.medicineImg);
+        Glide.with(holder.medicineImg).load("http://192.168.8.101:43175/easy-pill-war/ProductImages/"+medicineImageName).into(holder.medicineImg);
         holder.arrowBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -54,6 +54,7 @@ public class RegisterCustomerActivity extends AppCompatActivity implements View.
         progressBar = findViewById(R.id.progressBar);
     }
 
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {

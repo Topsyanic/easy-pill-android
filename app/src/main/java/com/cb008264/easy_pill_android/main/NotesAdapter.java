@@ -1,4 +1,4 @@
-package com.cb008264.easy_pill_android;
+package com.cb008264.easy_pill_android.main;
 
 import android.app.Activity;
 import android.content.Context;
@@ -13,7 +13,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.cb008264.easy_pill_android.main.AdminUpdateNoteActivity;
+import com.cb008264.easy_pill_android.R;
 import com.cb008264.easy_pill_android.model.Note;
 
 import java.util.List;

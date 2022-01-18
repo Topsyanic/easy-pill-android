@@ -257,10 +257,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             SharedPreferences preferences = getSharedPreferences("checkbox", MODE_PRIVATE);
             SharedPreferences.Editor editor = preferences.edit();
             editor.putString("remember", "false");
-            editor.putString("username", "");
-            editor.putString("email", "");
-            editor.putString("userId", "");
-            editor.putString("role", "");
+            editor.putString("username", ""+user.getFirstName() + " " + user.getLastName());
+            editor.putString("email", ""+user.getEmail());
+            editor.putString("userId", ""+ user.getUserId());
+            editor.putString("role", ""+ user.getUserRole());
             editor.apply();
         }
     }

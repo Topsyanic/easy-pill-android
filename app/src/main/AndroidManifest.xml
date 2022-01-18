@@ -15,7 +15,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Easypillandroid"
         android:usesCleartextTraffic="true">
-        <activity android:name=".main.CustomerHomeActivity"></activity>
+        <activity
+            android:name=".main.CustomerHomeActivity"
+            android:label=""
+            android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
         <activity android:name=".main.CustomerCompleteActivity" />
         <activity
             android:name=".main.CustomerViewProductActivity"
@@ -55,15 +58,17 @@
         <activity
             android:name=".main.AdminViewUserActivity"
             android:label="" />
-        <activity android:name=".RegisterDoctorActivity" />
-        <activity android:name=".RegisterCustomerActivity" />
+        <activity
+            android:name=".RegisterDoctorActivity"
+            android:label="" />
+        <activity
+            android:name=".RegisterCustomerActivity"
+            android:label="" />
         <activity
             android:name=".main.AdminHomeActivity"
             android:label=""
             android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity
-            android:name=".LoginActivity"
-            android:noHistory="true" />
+        <activity android:name=".LoginActivity" />
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
